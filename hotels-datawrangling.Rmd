@@ -2,6 +2,8 @@
 title: "Hotel bookings - data wrangling"
 author: "Mine Çetinkaya-Rundel"
 output: github_document
+editor_options: 
+  chunk_output_type: console
 ---
 
 ```{r load-pkg, message = FALSE}
@@ -38,11 +40,11 @@ Fill in the blanks for filtering for hotel bookings where the guest is **not** f
 
 **Note:** You will need to set `eval=TRUE` when you have an answer you want to try out.
 
-```{r travel-whim, eval=FALSE}
+```{r travel-whim, eval=TRUE}
 hotels %>%
   filter(
-    country ____ "USA", 
-    lead_time ____ ____
+    country != "USA", 
+    lead_time < 1
     )
 ```
 
