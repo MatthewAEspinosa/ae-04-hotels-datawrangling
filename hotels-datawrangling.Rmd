@@ -77,16 +77,16 @@ Then, do the same for city hotels, and compare the numbers of rows in the result
 hotels %>%
 filter(
   hotel == "Resort Hotel",
-  children >= 1 | babies >= 1
-  )
+  children >= 1 | babies >= 1) %>%
+  nrow()
 ```
 
 ```{r city-children}
 hotels %>%
 filter(
   hotel == "City Hotel",
-  children >= 1 | babies >= 1
-  )
+  children >= 1 | babies >= 1) %>%
+  nrow()
 ```
 
 ### Exercise 5.
@@ -100,9 +100,10 @@ Are there any surprising results?
 Your label should be short, informative, and shouldn't include spaces.
 It also shouldn't repeat a previous label, otherwise R Markdown will give you an error about repeated R chunk labels.
 
-```{r label-me-1}
-# add code here
-# pay attention to correctness and code style
+```{r adult-frequency}
+hotels%>%
+  count(adults)%>%
+  arrange(desc(n))
 ```
 
 ### Exercise 6.
@@ -123,8 +124,6 @@ Calculate minimum, mean, median, and maximum average daily rate (`adr`) grouped 
 Which type of hotel is higher, on average?
 
 ```{r label-me-3}
-# add code here
-# pay attention to correctness and code style
 ```
 
 ### Exercise 8.

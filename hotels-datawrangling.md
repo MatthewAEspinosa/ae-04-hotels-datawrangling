@@ -184,59 +184,21 @@ compare the numbers of rows in the resulting filtered data frames.
 hotels %>%
 filter(
   hotel == "Resort Hotel",
-  children >= 1 | babies >= 1
-  )
+  children >= 1 | babies >= 1) %>%
+  nrow()
 ```
 
-    ## # A tibble: 3,929 × 32
-    ##    hotel        is_canceled lead_time arrival_date_year arrival_date_month
-    ##    <chr>              <dbl>     <dbl>             <dbl> <chr>             
-    ##  1 Resort Hotel           0        18              2015 July              
-    ##  2 Resort Hotel           1        47              2015 July              
-    ##  3 Resort Hotel           0         1              2015 July              
-    ##  4 Resort Hotel           0        10              2015 July              
-    ##  5 Resort Hotel           1        79              2015 July              
-    ##  6 Resort Hotel           0       101              2015 July              
-    ##  7 Resort Hotel           0        92              2015 July              
-    ##  8 Resort Hotel           1        26              2015 July              
-    ##  9 Resort Hotel           0       102              2015 July              
-    ## 10 Resort Hotel           0        78              2015 July              
-    ## # … with 3,919 more rows, and 27 more variables:
-    ## #   arrival_date_week_number <dbl>, arrival_date_day_of_month <dbl>,
-    ## #   stays_in_weekend_nights <dbl>, stays_in_week_nights <dbl>, adults <dbl>,
-    ## #   children <dbl>, babies <dbl>, meal <chr>, country <chr>,
-    ## #   market_segment <chr>, distribution_channel <chr>, is_repeated_guest <dbl>,
-    ## #   previous_cancellations <dbl>, previous_bookings_not_canceled <dbl>,
-    ## #   reserved_room_type <chr>, assigned_room_type <chr>, …
+    ## [1] 3929
 
 ``` r
 hotels %>%
 filter(
   hotel == "City Hotel",
-  children >= 1 | babies >= 1
-  )
+  children >= 1 | babies >= 1) %>%
+  nrow()
 ```
 
-    ## # A tibble: 5,403 × 32
-    ##    hotel      is_canceled lead_time arrival_date_year arrival_date_month
-    ##    <chr>            <dbl>     <dbl>             <dbl> <chr>             
-    ##  1 City Hotel           1       100              2015 July              
-    ##  2 City Hotel           0        69              2015 July              
-    ##  3 City Hotel           0        67              2015 July              
-    ##  4 City Hotel           1        60              2015 July              
-    ##  5 City Hotel           0         0              2015 July              
-    ##  6 City Hotel           0         0              2015 July              
-    ##  7 City Hotel           0         0              2015 July              
-    ##  8 City Hotel           0        84              2015 July              
-    ##  9 City Hotel           0        74              2015 July              
-    ## 10 City Hotel           0        75              2015 July              
-    ## # … with 5,393 more rows, and 27 more variables:
-    ## #   arrival_date_week_number <dbl>, arrival_date_day_of_month <dbl>,
-    ## #   stays_in_weekend_nights <dbl>, stays_in_week_nights <dbl>, adults <dbl>,
-    ## #   children <dbl>, babies <dbl>, meal <chr>, country <chr>,
-    ## #   market_segment <chr>, distribution_channel <chr>, is_repeated_guest <dbl>,
-    ## #   previous_cancellations <dbl>, previous_bookings_not_canceled <dbl>,
-    ## #   reserved_room_type <chr>, assigned_room_type <chr>, …
+    ## [1] 5403
 
 ### Exercise 5.
 
@@ -251,9 +213,28 @@ include spaces. It also shouldn’t repeat a previous label, otherwise R
 Markdown will give you an error about repeated R chunk labels.
 
 ``` r
-# add code here
-# pay attention to correctness and code style
+hotels%>%
+  count(adults)%>%
+  arrange(desc(n))
 ```
+
+    ## # A tibble: 14 × 2
+    ##    adults     n
+    ##     <dbl> <int>
+    ##  1      2 89680
+    ##  2      1 23027
+    ##  3      3  6202
+    ##  4      0   403
+    ##  5      4    62
+    ##  6     26     5
+    ##  7      5     2
+    ##  8     20     2
+    ##  9     27     2
+    ## 10      6     1
+    ## 11     10     1
+    ## 12     40     1
+    ## 13     50     1
+    ## 14     55     1
 
 ### Exercise 6.
 
@@ -275,11 +256,6 @@ exercise?
 Calculate minimum, mean, median, and maximum average daily rate (`adr`)
 grouped by `hotel` type so that you can get these statistics separately
 for resort and city hotels. Which type of hotel is higher, on average?
-
-``` r
-# add code here
-# pay attention to correctness and code style
-```
 
 ### Exercise 8.
 
