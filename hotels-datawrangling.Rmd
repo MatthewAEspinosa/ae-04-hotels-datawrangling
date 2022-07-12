@@ -128,7 +128,14 @@ hotels %>%
 Calculate minimum, mean, median, and maximum average daily rate (`adr`) grouped by `hotel` type so that you can get these statistics separately for resort and city hotels.
 Which type of hotel is higher, on average?
 
-```{r label-me-3}
+```{r hotel-stats}
+hotels %>%
+  group_by(hotel) %>%
+  summarise(
+    min_rate = min(adr),
+    mean_rate = mean(adr),
+    med_rate = median(adr),
+    max_rate = max(adr))
 ```
 
 ### Exercise 8.
@@ -140,9 +147,16 @@ You can investigate the data in the viewer to locate these values, but preferabl
 
 **Hint:** For example, you can `filter` for the given `adr` amounts and `select` the relevant columns.
 
-```{r label-me-4}
-# add code here
-# pay attention to correctness and code style
+```{r outlier-adr-hotels}
+hotels %>%
+  filter(adr == min(adr) | adr == max(adr)) %>%
+  select(hotel,
+         adr,
+         arrival_date_year, 
+         arrival_date_month,
+         adults,
+         children,
+         babies)
 ```
 
 ## Data dictionary
